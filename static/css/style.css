@@ -1,0 +1,2 @@
+body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+.card-img-top { object-fit: contain; max-height: 220px; background: #f8f9fa; padding: 8px; }

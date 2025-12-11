@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-8">
+    <div class="card shadow-sm mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Comparison Results</h5>
+        <div class="row">
+          <div class="col-md-6">
+            <p><strong>SSIM (structure):</strong> {{ ssim_score }}</p>
+            <p><strong>ORB (features):</strong> {{ orb_score }} ({{ good_matches }} matches)</p>
+            <p><strong>Combined similarity:</strong> <span class="badge bg-success">{{ combined_percent }}%</span></p>
+          </div>
+          <div class="col-md-6">
+            <p><strong>Image A colors:</strong> {{ colorsA }}</p>
+            <p><strong>Image B colors:</strong> {{ colorsB }}</p>
+            <p><strong>Common colors:</strong> {{ common_colors if common_colors else 'None' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-3 shadow-sm">
+      <div class="card-header">Visuals</div>
+      <div class="card-body">
+        <div class="mb-3">
+          <h6>SSIM diff</h6>
+          <img src="{{ ssim_img }}" alt="ssim" class="img-fluid border rounded">
+        </div>
+        <div class="mb-3">
+          <h6>ORB matches</h6>
+          <img src="{{ matches_img }}" alt="matches" class="img-fluid border rounded">
+        </div>
+      </div>
+    </div>
+
+    <a class="btn btn-outline-primary" href="{{ url_for('index') }}">Compare another pair</a>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="card shadow-sm mb-3">
+      <div class="card-body">
+        <h6 class="card-title">Summary</h6>
+        <p class="small">
+          The tool evaluates structural similarity (SSIM), feature similarity (ORB), and dominant colors.
+          Combined score is a weighted sum: SSIM (60%) + ORB (40%).
+        </p>
+        <hr/>
+        <h6 class="card-title">Files</h6>
+        <ul class="list-unstyled small">
+          <li><a href="{{ imgA }}" target="_blank">View Image A</a></li>
+          <li><a href="{{ imgB }}" target="_blank">View Image B</a></li>
+          <li><a href="{{ ssim_img }}" target="_blank">Download SSIM Diff</a></li>
+          <li><a href="{{ matches_img }}" target="_blank">Download Matches</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
