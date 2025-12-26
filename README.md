@@ -169,3 +169,7 @@ Fork → Improve → Submit PR
 
 Developer: M V Karthikeya
 Connect on LinkedIn anytime.
+
+📜 License
+
+This project is licensed under the MIT License.
